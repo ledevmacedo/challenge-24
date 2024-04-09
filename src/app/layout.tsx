@@ -1,11 +1,7 @@
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+import { fontSans } from "@/lib/fonts"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export default function RootLayout({
