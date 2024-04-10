@@ -31,8 +31,6 @@ export default function SignIn() {
             console.error("Error during login:", error);
         }
     };
-
-
     return (
         <>
             <div className="flex flex-col items-center justify-center content-center h-dvh">
