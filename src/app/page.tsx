@@ -7,10 +7,10 @@ import { isAuthenticated } from '../../utils/Auth';
 
 
 function Home() {
-  let token
-  token = localStorage.getItem("returnName")
+  // let token
+  // token = localStorage.getItem("returnName")
 
-  const [sessionToken, setSessionToken] = useState(token)
+  // const [sessionToken, setSessionToken] = useState(token)
   return (
     <>
       <div className="p-4 flex flex-col gap-2 items-center justify-center content-center w-full">
@@ -19,7 +19,7 @@ function Home() {
           <Button>Click me</Button>
         </div>
         <h1 className='text-4xl p-4 bg-emerald-500'>
-          {sessionToken}
+
         </h1>
 
         <p className='text-4xl p-4 bg-red-500'> </p>
