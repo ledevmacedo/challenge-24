@@ -2,35 +2,28 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-    const { email, password } = await request.json();
+    const { firstName, lastName, email, password } = await request.json();
 
     try {
-        const response = await fetch('https://app.grupoerre.pt:1934/auth/login', {
+        const response = await fetch('http://app.grupoerre.pt:1034/auth/create-user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ firstName, lastName, email, password }),
         });
-
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        if (response.ok) {
-            console.log("autenticado com sucesso (IF)")
-        }
         const data = await response.json();
-        console.log("autenticado com sucesso")
         return new Response(JSON.stringify(data), {
-
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
             },
         });
-
     } catch (error) {
         console.error('Error fetching external data:', error);
         return new Response(JSON.stringify({ error: 'Failed to fetch data' }), {

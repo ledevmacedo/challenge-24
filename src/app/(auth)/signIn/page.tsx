@@ -6,12 +6,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ModeToggle } from "@/components/modeToggle"
 import { useState } from "react"
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function SignIn() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-
+    const router = useRouter();
     const handleSignIn = async () => {
         try {
             const response = await fetch("/api/login", {
@@ -23,7 +23,7 @@ export default function SignIn() {
             });
 
             if (response.ok) {
-                redirect('/')
+                router.push('/');
             } else {
                 console.error("Login failed");
             }
@@ -74,11 +74,8 @@ export default function SignIn() {
                         <Link href="/signUp" className="underline">
                             Sign up
                         </Link>
-
                     </div>
-
                 </div>
-
             </div>
         </>
     )
