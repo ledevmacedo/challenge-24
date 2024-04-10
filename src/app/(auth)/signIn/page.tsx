@@ -21,8 +21,25 @@ export default function SignIn() {
                 },
                 body: JSON.stringify({ email, password }),
             });
-
             if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('tokenType', data.tokenType);
+                localStorage.setItem('expires_in', data.expires_in);
+                localStorage.setItem('inssued', data.refreshToken);
+                localStorage.setItem('expires', data.refreshToken);
+
+                localStorage.setItem('refreshToken', data.refreshToken.refreshToken);
+                localStorage.setItem('expires_in', data.refreshToken.expires_in);
+                localStorage.setItem('inssued', data.refreshToken.inssued);
+                localStorage.setItem('expires', data.refreshToken.expires);
+
+                localStorage.setItem('userId', data.userId);
+                localStorage.setItem('returnName', data.returnName);
+                localStorage.setItem('returnFirstName', data.returnFirstName);
+                localStorage.setItem('returnLastName', data.returnLastName);
+                localStorage.setItem('returnUserEmail', data.returnUserEmail);
+                localStorage.setItem('returnUserGroup', data.returnUserGroup);
                 router.push('/');
             } else {
                 console.error("Login failed");

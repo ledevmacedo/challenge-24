@@ -24,7 +24,18 @@ export default function SignUp() {
                 body: JSON.stringify({ firstName, lastName, email, password }),
             });
             if (response.ok) {
-                router.push('/');
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('returnName', data.returnName);
+                localStorage.setItem('returnFirstName', data.returnFirstName);
+                localStorage.setItem('returnLastName', data.returnLastName);
+                localStorage.setItem('returnUserEmail', data.returnUserEmail);
+                localStorage.setItem('returnUserGroup', data.returnUserGroup);
+                localStorage.setItem('tokenType', data.tokenType);
+                localStorage.setItem('expires_in', data.expires_in);
+                localStorage.setItem('inssued', data.refreshToken);
+                localStorage.setItem('expires', data.refreshToken);
+                router.push('/signIn');
             } else {
                 console.error("Login failed");
             }

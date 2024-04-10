@@ -7,22 +7,10 @@ import { isAuthenticated } from '../../utils/Auth';
 
 
 function Home() {
-  const [data, setData] = useState(null)
-  const [isLoading, setLoading] = useState(true)
+  let token
+  token = localStorage.getItem("returnName")
 
-  useEffect(() => {
-    fetch('/api/check-authentication-status')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, [])
-
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
-
-
+  const [sessionToken, setSessionToken] = useState(token)
   return (
     <>
       <div className="p-4 flex flex-col gap-2 items-center justify-center content-center w-full">
@@ -31,10 +19,10 @@ function Home() {
           <Button>Click me</Button>
         </div>
         <h1 className='text-4xl p-4 bg-emerald-500'>
-          {JSON.stringify(data)}
+          {sessionToken}
         </h1>
 
-        <p className='text-4xl p-4 bg-red-500'>{JSON.stringify(isAuthenticated)} </p>
+        <p className='text-4xl p-4 bg-red-500'> </p>
 
       </div>
     </>
@@ -42,3 +30,19 @@ function Home() {
 }
 
 export default isAuth(Home)
+
+// const [data, setData] = useState(null)
+// const [isLoading, setLoading] = useState(true)
+
+
+// useEffect(() => {
+//   fetch('/api/check-authentication-status')
+//     .then((res) => res.json())
+//     .then((data) => {
+//       setData(data)
+//       setLoading(false)
+//     })
+// }, [])
+
+// if (isLoading) return <p>Loading...</p>
+// if (!data) return <p>No profile data</p>

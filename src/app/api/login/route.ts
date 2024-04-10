@@ -18,13 +18,10 @@ export async function POST(request: NextRequest) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        if (response.ok) {
-            console.log("autenticado com sucesso (IF)")
-        }
         const data = await response.json();
         console.log("autenticado com sucesso")
+        
         return new Response(JSON.stringify(data), {
-
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
