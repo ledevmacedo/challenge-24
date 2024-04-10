@@ -1,6 +1,8 @@
-import { isAuthenticated } from "./utils/Auth";
+ import { isAuthenticated } from "./utils/Auth";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+
+// const isAuthenticated = false
 
 const privateRoutes = [
     "/",
