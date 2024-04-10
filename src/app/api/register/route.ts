@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
     const { firstName, lastName, email, password } = await request.json();
-
+    
     try {
         const response = await fetch('http://app.grupoerre.pt:1034/auth/create-user', {
             method: 'POST',

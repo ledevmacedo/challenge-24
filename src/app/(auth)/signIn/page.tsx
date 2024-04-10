@@ -9,9 +9,9 @@ import { useState } from "react"
 import { useRouter } from 'next/navigation'
 
 export default function SignIn() {
+    const router = useRouter();
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    const router = useRouter();
     const handleSignIn = async () => {
         try {
             const response = await fetch("/api/login", {

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ModeToggle } from "@/components/modeToggle"
 export default function SignUp() {
+    const router = useRouter();
     const [firstName, setFirstName] = useState<string>('')
     const [lastName, setLastName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
@@ -23,7 +24,7 @@ export default function SignUp() {
                 body: JSON.stringify({ firstName, lastName, email, password }),
             });
             if (response.ok) {
-                redirect('/')
+                router.push('/');
             } else {
                 console.error("Login failed");
             }
