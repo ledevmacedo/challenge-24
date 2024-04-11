@@ -11,7 +11,8 @@ export const clients = [
                 noteId: "1",
                 createdByUser: "User Id",
                 created: "2024-04-10T22:53:51.322Z",
-                note: "O cliente expressou interesse em atualizar o logotipo e melhorar a presença nas redes sociais."
+                noteTitle: "Request for change to the project",
+                note: "The Customer requests that changes be made to the Landing Page, designated for the responsible departments."
             }
         ],
         events: [
@@ -19,9 +20,12 @@ export const clients = [
                 eventId: "1",
                 createdByUser: "User Id",
                 created: "2024-04-10T22:53:51.322Z",
+                eventType: "Meet",
                 eventTitle: "Reunião de Briefing para Rebranding",
-                eventType: "1",
-                eventDate: "2024-06-10T22:53:51.322Z"
+                eventDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam nisi debitis fuga magni quam obcaecati beatae soluta officiis, expedita natus impedit nobis illo odit error non minima aliquam ipsam sit?",
+                departament: ["Érre Boost", "Design Station"],
+                eventDateStart: "2024-12-10T22:53:51.322Z",
+                eventDateEnd: "2024-15-10T22:53:51.322Z"
             }
         ]
     },
@@ -31,6 +35,7 @@ export const clients = [
         clientCompany: "Food Delivery App",
         phoneNumber: "951 200 001",
         email: "duarte@foodapp.pt",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ullam, atque quisquam officiis, quos minima possimus assumenda obcaecati sed quo fugit consectetur reiciendis voluptatem cumque excepturi iste. Debitis, odio assumenda. ",
         tags: ["Boost"],
         notes: [
             {
