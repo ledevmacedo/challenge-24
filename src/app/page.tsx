@@ -18,9 +18,14 @@ import { ActionsHeader } from '@/components/home/actionsHeader';
 import { FilterPriority } from '@/components/home/filterPriority';
 import { FilterDepartment } from '@/components/home/filterDepartment';
 import { FilterDateRange } from '@/components/home/filterDateRange';
+import { NoteHeader } from '@/components/home/noteHeader';
 
 //
 function Home() {
+  const handleStateChange = (states: any) => {
+    console.log("Estados recebidos:", states);
+    // Faça o que precisar com os estados recebidos aqui
+  };
   // let token
   // token = localStorage.getItem("returnName")
 
@@ -33,7 +38,7 @@ function Home() {
           className=" rounded-lg border"
         >
           <ResizablePanel defaultSize={20}>
-            <div className='p-4 min-h-[68px]'>
+            <div className='p-4 min-h-[68px]  max-h-[68px]'>
             </div>
             <Separator />
             <div className="flex h-full items-center justify-center p-6">
@@ -44,8 +49,8 @@ function Home() {
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel defaultSize={45}>
-            <div className='p-4 min-h-[68px] flex  items-center content-center justify-between'>
-              <h1 className='text-xl font-semibold '>Clients</h1>
+            <div className='p-4 min-h-[68px]  max-h-[68px] flex  items-center content-center justify-between'>
+              <h1 className='text-xl font-semibold '>Contacts</h1>
               <ActionsHeader />
             </div>
             <Separator />
@@ -54,7 +59,7 @@ function Home() {
                 <FiltersSearch />
                 <div className='flex gap-2 w-full justify-start'>
                   <FilterPriority />
-                  <FilterDepartment />
+                  <FilterDepartment onStateChange={handleStateChange} />
                   <FilterDateRange />
                 </div>
               </div>
@@ -63,8 +68,9 @@ function Home() {
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel defaultSize={25}>
-            <div className='p-4 min-h-[68px]'>
-
+            <div className='w-full p-4 min-h-[68px] max-h-[68px] flex  items-center content-center justify-between'>
+              <h1 className='text-xl font-semibold w-full'>Client Notes</h1>
+              <NoteHeader />
             </div>
             <Separator />
             <NotesClient />
