@@ -5,7 +5,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
-
+import { Badge } from "../ui/badge"
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -26,6 +26,15 @@ export function FilterDepartment() {
     const [showDesignStation, setShowDesignStation] = useState<Checked>()
     const [showURock, setShowURock] = useState<Checked>()
     const [showErreSetGo, setShowErreSetGo] = useState<Checked>()
+
+    const countStates = [
+        showErreTechnology,
+        showErreBoost,
+        showErreLRB,
+        showDesignStation,
+        showURock,
+        showErreSetGo];
+    const countStatesValue = countStates.reduce((sum, countStates) => sum + (countStates ? 1 : 0), 0);
     return (
         <>
             <div>
@@ -35,11 +44,15 @@ export function FilterDepartment() {
                             <ListFilter className="h-3.5 w-3.5" />
                             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                                 Department
+                                {countStatesValue ? <Badge className="text-[10px] py-0 px-2 ml-2" variant="secondary" >
+                                    {countStatesValue}
+                                </Badge> : null}
                             </span>
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" >
-                        <DropdownMenuLabel>Filter Department</DropdownMenuLabel>
+                        <DropdownMenuLabel>Filter Department
+                        </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuCheckboxItem
                             checked={showErreTechnology}
