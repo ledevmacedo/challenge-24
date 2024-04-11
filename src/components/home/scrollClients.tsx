@@ -9,6 +9,7 @@ export function ScrollClients() {
             <ScrollArea className="h-dvh p-4">
                 <div className="flex flex-col w-full gap-4"
                 >
+                    {/* Criar um botão que altera entre cards e tabela, para facilitar a visualização em grandes quantidades :) */}
                     <div className="w-full flex flex-col gap-2">
                         {clients.map((client, index) =>
                             <CardClient key={index}
