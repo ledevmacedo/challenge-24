@@ -1,18 +1,15 @@
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { CardClient } from "./cardClient"
 import { clients } from "../../../db/db"
-
-import { Search, } from "lucide-react"
 import { format } from 'date-fns';
-import { Input } from "../ui/input";
-import { FiltersSearch } from "./filtersSearch";
+
 
 export function ScrollClients() {
-
     return (
         <>
             <ScrollArea className="h-dvh p-4">
-                <div className="flex flex-col w-full gap-4">
+                <div className="flex flex-col w-full gap-4"
+                >
                     <div className="w-full flex flex-col gap-2">
                         {clients.map((client, index) =>
                             <CardClient key={index}
