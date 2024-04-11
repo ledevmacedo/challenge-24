@@ -6,6 +6,8 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { NotesCardEvent } from "./notesCardEvent"
 import { NotesCardContact } from "./notesCardContact"
+import { ScrollArea } from "@/components/ui/scroll-area"
+
 export function NotesClient() {
     return (
         <>
@@ -51,20 +53,18 @@ export function NotesClient() {
                 </div>
             </section>
             <Separator />
-            <div className="flex flex-col gap-2 w-full p-3">
-                <NotesCardEvent />
-                <NotesCardContact />
+            <div className="">
+                <ScrollArea className="h-dvh  p-4 ">
+                    <div className="flex flex-col w-full gap-4">
+                        <NotesCardEvent />
+                        <NotesCardContact />
+                    </div>
+                </ScrollArea>
             </div>
         </>
     )
 }
 
-{/* <div className="flex content-center items-center justify-between">
-    <h1 className="text-base font-medium leading-none"> {clientName} </h1>
-    <p className="text-sm opacity-80">
-        {lastNoteDate}
-    </p>
-</div> */}
 
 // clientId: "3",
 // clientName: "Marta",
