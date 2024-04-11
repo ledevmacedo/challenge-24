@@ -3,7 +3,6 @@ import { CardClient } from "./cardClient"
 import { clients } from "../../../db/db"
 import { format } from 'date-fns';
 
-
 export function ScrollClients() {
     return (
         <>
