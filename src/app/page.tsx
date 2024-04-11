@@ -4,8 +4,17 @@ import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/modeToggle";
 import isAuth from '@/components/isAuth';
 import { isAuthenticated } from '../../utils/Auth';
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+import { ScrollClients } from '@/components/home/scrollClients';
+import { NotesClient } from '@/components/home/notesClient';
+import { FiltersHeader } from '@/components/home/filtersHeader';
+import { Separator } from "@/components/ui/separator"
 
-
+//
 function Home() {
   // let token
   // token = localStorage.getItem("returnName")
@@ -13,17 +22,30 @@ function Home() {
   // const [sessionToken, setSessionToken] = useState(token)
   return (
     <>
-      <div className="p-4 flex flex-col gap-2 items-center justify-center content-center w-full">
-        <div className="flex gap-2 items-center">
-          <ModeToggle />
-          <Button>Click me</Button>
-        </div>
-        <h1 className='text-4xl p-4 bg-emerald-500'>
-
-        </h1>
-
-        <p className='text-4xl p-4 bg-red-500'> </p>
-
+      <div className="p-4 flex flex-col gap-2 items-center justify-center content-center w-full h-dvh">
+        <ResizablePanelGroup
+          direction="horizontal"
+          className=" rounded-lg border"
+        >
+          <ResizablePanel defaultSize={20}>
+            <div className="flex h-full items-center justify-center p-6">
+              <span className="font-semibold">
+                <ModeToggle />
+              </span>
+            </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel defaultSize={45}>
+            <div className="p-4 grid gap-4">
+              <FiltersHeader />
+              <ScrollClients />
+            </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel defaultSize={25}>
+            <NotesClient />
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </div>
     </>
   );
