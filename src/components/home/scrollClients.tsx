@@ -7,7 +7,6 @@ export function ScrollClients() {
     const [contacts, setContacts] = useState<any[]>([]);
 
     useEffect(() => {
-
         const localContacts = localStorage.getItem('contacts');
         if (localContacts) {
             setContacts(JSON.parse(localContacts));
@@ -25,10 +24,8 @@ export function ScrollClients() {
                                 clientCompany={contact.company}
                                 clientName={contact.name}
                                 clietnId={contact.id}
-                                lastNote="ola mundo"
-                                lastNoteDate="10/10/2023"
-                                // lastNote={contact.notes?.map(notes => notes.note)}
-                                // lastNoteDate={contact.notes?.map(notes => format(notes.created, 'dd MMM yyy'))}
+                                lastNote={contact.notes?.map(notes => notes.note)}
+                                lastNoteDate={contact.notes?.map(notes => format(notes.created, 'dd MMM yyy'))}
                             />
                         )}
                     </div>

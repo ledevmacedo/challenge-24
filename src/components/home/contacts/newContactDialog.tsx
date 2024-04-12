@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -10,6 +10,15 @@ import { PlusCircle } from "lucide-react";
 
 
 export function NewContactDiaolog() {
+    const [user, setUser] = useState<string>('');
+
+    useEffect(() => {
+        const userIdLocal = localStorage.getItem('userId');
+        if (userIdLocal !== null) {
+            setUser(userIdLocal.toString());
+        }
+    }, []);
+
     const [name, setName] = useState<string>();
     const [company, setCompany] = useState<string>();
     const [about, setAbout] = useState<string>();
@@ -21,6 +30,8 @@ export function NewContactDiaolog() {
     const [errorAbout, setErrorAbout] = useState<string>('');
     const [errorPhone, setErrorPhone] = useState<string>('');
     const [errorEmail, setErrorEmail] = useState<string>('');
+
+
 
     const createNewUser = () => {
         let hasError = false;
@@ -64,7 +75,6 @@ export function NewContactDiaolog() {
             return;
         }
         const contactsData = {
-            id: "id",
             name: name,
             company: company,
             about: about,
@@ -72,16 +82,14 @@ export function NewContactDiaolog() {
             created: new Date().toISOString(),
             notes: [
                 {
-                    id: "",
-                    createdByUser: "meu user atual",
+                    createdByUser: user,
                     created: created,
-                    noteTitle: "",
-                    note: "Contact created",
+                    noteTitle: "Contact created",
+                    note: "",
                 }
             ],
             events: [
                 {
-                    id: "",
                     name: "",
                     created: created,
                     eventType: "",
@@ -92,14 +100,10 @@ export function NewContactDiaolog() {
                 }
             ]
         };
-
-        // Recupera o array de contatos existente ou inicializa um novo array se não existir
         const existingContacts = JSON.parse(localStorage.getItem('contacts') || '[]');
 
-        // Adiciona o novo contato ao array
         existingContacts.push(contactsData);
 
-        // Salva o array atualizado de volta ao localStorage
         localStorage.setItem('contacts', JSON.stringify(existingContacts));
     };
 

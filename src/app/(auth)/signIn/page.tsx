@@ -40,6 +40,8 @@ export default function SignIn() {
                 localStorage.setItem('returnLastName', data.returnLastName);
                 localStorage.setItem('returnUserEmail', data.returnUserEmail);
                 localStorage.setItem('returnUserGroup', data.returnUserGroup);
+
+                
                 router.push('/');
             } else {
                 console.error("Login failed");
