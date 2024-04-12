@@ -80,17 +80,7 @@ export function NewContactDiaolog() {
             email: email,
             phone: phone,
             created: new Date().toISOString(),
-            // events: [
-            //     {
-            //         createdByUser: user,
-            //         created: created,
-            //         type: "",
-            //         title: "",
-            //         description: "",
-            //         dateStart: "",
-            //         dateEnd: ""
-            //     }
-            // ]
+
         };
         const existingContacts = JSON.parse(localStorage.getItem('contacts') || '[]');
 

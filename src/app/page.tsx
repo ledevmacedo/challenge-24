@@ -20,16 +20,9 @@ import { FilterDepartment } from '@/components/home/filterDepartment';
 import { FilterDateRange } from '@/components/home/filterDateRange';
 import { NoteHeader } from '@/components/home/noteHeader';
 
-//
-function Home() {
-  const handleStateChange = (states: any) => {
-    console.log("Estados recebidos:", states);
-    // Faça o que precisar com os estados recebidos aqui
-  };
-  // let token
-  // token = localStorage.getItem("returnName")
 
-  // const [sessionToken, setSessionToken] = useState(token)
+function Home() {
+
   return (
     <>
       <div className="p-4 flex flex-col gap-2 items-center justify-center content-center w-full h-dvh">
@@ -82,19 +75,3 @@ function Home() {
 }
 
 export default isAuth(Home)
-
-// const [data, setData] = useState(null)
-// const [isLoading, setLoading] = useState(true)
-
-
-// useEffect(() => {
-//   fetch('/api/check-authentication-status')
-//     .then((res) => res.json())
-//     .then((data) => {
-//       setData(data)
-//       setLoading(false)
-//     })
-// }, [])
-
-// if (isLoading) return <p>Loading...</p>
-// if (!data) return <p>No profile data</p>

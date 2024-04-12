@@ -6,28 +6,19 @@ import { Badge } from "../ui/badge"
 import { useState } from "react"
 import { Calendar, Clock } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
-
+import { format } from "date-fns"
 interface cardEventProps {
     created: string,
-    eventDateStart: string,
-    eventDateEnd: string,
+    eventDateStart: any,
+    eventDateEnd: any,
     createdByUser: string,
     eventDescription: string,
     eventTitle: string,
     eventType: string,
-    // name: string,
-
 }
-
-// createdByUser: user,
-// created: created,
-// type: "",
-// title: "",
-// description: "",
-// eventDateStart: "",
-// eventDateEnd: ""
-
 export function NotesCardEvent({ eventDescription, eventTitle, eventType, eventDateStart, eventDateEnd, created, createdByUser }: cardEventProps) {
+    const createdFormat = format(new Date(created), 'dd MMM yyy');
+
     return (
         <>
             <Card className={`cursor-pointer dark:border-none border-none shadow-none`}>
@@ -47,7 +38,7 @@ export function NotesCardEvent({ eventDescription, eventTitle, eventType, eventD
                             </Badge>
                             : null}
                     </div>
-                    <p className="text-sm opacity-60">{createdByUser}  - {created} </p>
+                    <p className="text-sm opacity-60">{createdByUser} - {createdFormat} </p>
                 </CardContent>
                 <Separator className="shadow-md" />
             </Card>

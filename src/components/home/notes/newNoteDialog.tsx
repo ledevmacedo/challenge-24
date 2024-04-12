@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { PlusCircle } from "lucide-react";
 import { BadgeCheck } from "@/components/uiCustom/badgeCheck";
 import { Badge } from "@/components/ui/badge"
+import { useStore } from '../../../../store';
+
 
 const departamentsList = [
     "Érre Boost",
@@ -16,16 +18,46 @@ const departamentsList = [
 ]
 
 export function NewNoteDialog() {
-    const [title, setTitle] = useState<string | undefined>();
-    const [description, setDescription] = useState<string | undefined>();
+    const { contactIndex } = useStore()
+    const [user, setUser] = useState<string>(''); ~
 
-    function handleSubmit() {
-        localStorage.setItem
-        // let token
-        // token = localStorage.getItem("returnName")
+        useEffect(() => {
+            const userIdLocal = localStorage.getItem('returnName');
+            if (userIdLocal !== null) {
+                setUser(userIdLocal.toString());
+            }
+        }, []);
 
-        // const [sessionToken, setSessionToken] = useState(token)
-    }
+    const [title, setTitle] = useState<string>();
+    const [description, setDescription] = useState<string>();
+    const [type, setType] = useState<string>();
+    const [createdBy, setCreatedBy] = useState<any>(user)
+    const [dateStart, setDateStart] = useState<Date>()
+    const [dateEnd, setDateEnd] = useState<Date>()
+
+
+    const createNewEvent = () => {
+        const newEvent = {
+            createdByUser: user,
+            created: new Date().toISOString(),
+            type: type,
+            title: title,
+            description: description,
+            dateStart: dateStart ? dateStart.toISOString() : "",
+            dateEnd: dateEnd ? dateEnd.toISOString() : ""
+        };
+
+        const existingContacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+
+        if (existingContacts[contactIndex] && !existingContacts[contactIndex].events) {
+            existingContacts[contactIndex].events = [];
+        }
+
+        existingContacts[contactIndex].events.push(newEvent);
+
+        localStorage.setItem('contacts', JSON.stringify(existingContacts));
+    };
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -53,6 +85,16 @@ export function NewNoteDialog() {
                         onChange={(e) => setTitle(e.target.value)}
                         type="text" id="title" />
                 </div>
+                <div className="grid gap-2 ">
+                    <div className="flex items-center">
+                        <Label htmlFor="type">Type</Label>
+                    </div>
+                    <Input
+                        required
+                        value={type}
+                        onChange={(e) => setType(e.target.value)}
+                        type="text" id="type" />
+                </div>
 
                 <div className="grid gap-2 ">
                     <div className="flex items-center">
@@ -66,21 +108,8 @@ export function NewNoteDialog() {
                     />
                 </div>
 
-                <div className="grid gap-2 ">
-                    <div className="flex items-center">
-                        {/* <Label htmlFor="title">Department</Label> */}
-                    </div>
-                    <div className="flex items-center gap-2 flex-wrap justify-start">
-                        {/* {departamentsList.map((item, index) =>
-                            <BadgeCheck
-                                key={index} label={item}
-                                onStateChange={handleSendDepartaments}>
-                            </BadgeCheck>
-                        )} */}
-                    </div>
-                </div>
                 <DialogFooter>
-                    <Button type="submit" onClick={handleSubmit}>Submit</Button>
+                    <Button type="submit" onClick={createNewEvent}>Submit</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog >

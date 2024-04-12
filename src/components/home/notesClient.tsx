@@ -5,12 +5,10 @@ import {
 } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { NotesCardEvent } from "./notesCardEvent"
-import { NotesCardContact } from "./notesCardContact"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useStore } from '../../../store';
 import { useState, useEffect } from "react"
-import { Contact } from "lucide-react"
-import { FormatDateOptions, format } from "date-fns"
+
 
 export function NotesClient() {
 
@@ -46,10 +44,6 @@ export function NotesClient() {
                         </div>
                         <div>
                             {!selectedContact?.events || !selectedContact?.events[0] ? null : <p className="text-xs font-medium opacity-90">Last Action</p>}
-
-                            <p className="text-xs opacity-60">
-                                {selectedContact?.events?.length > 0 ? format(selectedContact.events[selectedContact.events.length - 1].created, 'dd MMM yyy ') : ''}
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -79,49 +73,29 @@ export function NotesClient() {
             </section>
             <Separator />
             <div className="">
-                <ScrollArea className="h-dvh  p-4 ">
+                <ScrollArea className="h-dvh p-4">
                     <div className="flex flex-col w-full gap-4">
-                        {!selectedContact?.events || !selectedContact?.events[0] ? "Crie sua primeira nota!" :
+                        {!selectedContact?.events || !selectedContact?.events.length ? "Crie sua primeira nota!" :
                             <>
-                                {contacts.map((contact, index) => (
-                                    <NotesCardEvent
-                                        key={index}
-                                        eventDescription={contact.events && contact.events[0] && contact.events[0].description}
-                                        eventType={contact.events && contact.events[0] && contact.events[0].type}
-                                        eventTitle={contact.events && contact.events[0] && contact.events[0].title}
-                                        eventDateStart={contact.event?.map((event: { dateStart: any; }) => format(event.dateStart, 'dd MMM '))}
-                                        eventDateEnd={contact.event?.map((event: { dateEnd: any; }) => format(event.dateEnd, 'dd MMM '))}
-                                        createdByUser={contact.events && contact.events[0] && contact.events[0].createdByUser}
-                                        created={contact.event?.map((event: { created: any; }) => format(event.created, 'dd MMM yyy '))}
-                                    />
+                                {contacts.filter(contact => contact.events && contact.events.length > 0).map((contact) => (
+                                    contact.events.map((event:any, eventIndex:any) => (
+                                        <NotesCardEvent
+                                            key={eventIndex}
+                                            eventDescription={event.description}
+                                            eventType={event.type}
+                                            eventTitle={event.title}
+                                            eventDateStart={event.dateStart}
+                                            eventDateEnd={event.dateEnd}
+                                            createdByUser={event.createdByUser}
+                                            created={event.created}
+                                        />
+                                    ))
                                 ))}
-                            </>}
-
-                        {/* 
-lastNoteDate={contact.notes?.map((notes: { created: any; }) => format(notes.created, 'dd MMM yyy'))} 
-                     */}
-                        {/* 
-                        
-                    createdByUser: user,
-                    created: created,
-                    type: "",
-                    title: "",
-                    description: "",
-                    eventDateStart: "",
-                    eventDateEnd: ""
-                        */}
-                        {/* <NotesCardEvent /> */}
-                        {/* <NotesCardContact /> */}
+                            </>
+                        }
                     </div>
                 </ScrollArea>
             </div>
         </>
     )
 }
-
-
-// clientId: "3",
-// clientName: "Marta",
-// clientCompany: "Guima Events",
-// phoneNumber: "951 200 002",
-// email: "marta@guimaevents.pt",

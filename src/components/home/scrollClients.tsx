@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 import { useStore } from '../../../store';
 export function ScrollClients() {
-    const { contactIndex, setContactIndex } = useStore()
+    const { setContactIndex } = useStore()
     const [contacts, setContacts] = useState<any[]>([]);
 
     const handleSetIndex = (index: number) => {
