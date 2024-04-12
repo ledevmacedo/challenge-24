@@ -59,7 +59,7 @@ function Home() {
                 <FiltersSearch />
                 <div className='flex gap-2 w-full justify-start'>
                   <FilterPriority />
-                  <FilterDepartment onStateChange={handleStateChange} />
+                  <FilterDepartment />
                   <FilterDateRange />
                 </div>
               </div>

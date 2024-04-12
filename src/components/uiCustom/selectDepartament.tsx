@@ -19,7 +19,7 @@ import { useState } from "react"
 
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 
-export function SelectDepartment() {
+export function SelectDepartment({ sendStates }: any) {
     const [showErreTechnology, setShowErreTechnology] = useState<Checked>()
     const [showErreBoost, setShowErreBoost] = useState<Checked>()
     const [showErreLRB, setShowErreLRB] = useState<Checked>()
@@ -35,6 +35,7 @@ export function SelectDepartment() {
         showURock,
         showErreSetGo];
     const countStatesValue = countStates.reduce((sum, countStates) => sum + (countStates ? 1 : 0), 0);
+
     return (
         <>
             <div>

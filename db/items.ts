@@ -24,3 +24,4 @@ export const departments = [
         label: "Érre.Set.Go",
     },
 ] as const
+
