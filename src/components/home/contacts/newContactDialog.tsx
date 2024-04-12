@@ -16,7 +16,6 @@ export function NewContactDiaolog() {
     const [phone, setPhone] = useState<string>();
     const [email, setEmail] = useState<string>();
     const [created, setCreated] = useState<Date>(new Date());
-
     const [errorName, setErrorName] = useState<string>('');
     const [errorCompany, setErrorCompany] = useState<string>('');
     const [errorAbout, setErrorAbout] = useState<string>('');
@@ -65,11 +64,33 @@ export function NewContactDiaolog() {
             return;
         }
         const contactsData = {
+            id: "id",
             name: name,
             company: company,
             about: about,
             email: email,
             created: new Date().toISOString(),
+            notes: [
+                {
+                    id: "",
+                    createdByUser: "meu user atual",
+                    created: created,
+                    noteTitle: "",
+                    note: "Contact created",
+                }
+            ],
+            events: [
+                {
+                    id: "",
+                    name: "",
+                    created: created,
+                    eventType: "",
+                    eventTitle: "",
+                    eventDescription: "",
+                    eventDateStart: "",
+                    eventDateEnd: "",
+                }
+            ]
         };
 
         // Recupera o array de contatos existente ou inicializa um novo array se não existir

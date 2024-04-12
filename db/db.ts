@@ -22,8 +22,7 @@ export const clients = [
                 created: "2024-04-10T22:53:51.322Z",
                 eventType: "Meet",
                 eventTitle: "Reunião de Briefing para Rebranding",
-                eventDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam nisi debitis fuga magni quam obcaecati beatae soluta officiis, expedita natus impedit nobis illo odit error non minima aliquam ipsam sit?",
-                departament: ["Érre Boost", "Design Station"],
+                eventDescription: "",
                 eventDateStart: "2024-12-10T22:53:51.322Z",
                 eventDateEnd: "2024-15-10T22:53:51.322Z"
             }
