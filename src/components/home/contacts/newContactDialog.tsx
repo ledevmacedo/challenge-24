@@ -31,8 +31,6 @@ export function NewContactDiaolog() {
     const [errorPhone, setErrorPhone] = useState<string>('');
     const [errorEmail, setErrorEmail] = useState<string>('');
 
-
-
     const createNewUser = () => {
         let hasError = false;
 
@@ -75,30 +73,24 @@ export function NewContactDiaolog() {
             return;
         }
         const contactsData = {
+            id: "",
             name: name,
             company: company,
             about: about,
             email: email,
+            phone: phone,
             created: new Date().toISOString(),
-            notes: [
-                {
-                    createdByUser: user,
-                    created: created,
-                    noteTitle: "Contact created",
-                    note: "First note",
-                }
-            ],
-            events: [
-                {
-                    name: "",
-                    created: new Date().toISOString(),
-                    eventType: "",
-                    eventTitle: "",
-                    eventDescription: "",
-                    eventDateStart: "",
-                    eventDateEnd: "",
-                }
-            ]
+            // events: [
+            //     {
+            //         createdByUser: user,
+            //         created: created,
+            //         type: "",
+            //         title: "",
+            //         description: "",
+            //         dateStart: "",
+            //         dateEnd: ""
+            //     }
+            // ]
         };
         const existingContacts = JSON.parse(localStorage.getItem('contacts') || '[]');
 

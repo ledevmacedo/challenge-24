@@ -7,24 +7,47 @@ import { useState } from "react"
 import { Calendar, Clock } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 
-export function NotesCardEvent() {
+interface cardEventProps {
+    created: string,
+    eventDateStart: string,
+    eventDateEnd: string,
+    createdByUser: string,
+    eventDescription: string,
+    eventTitle: string,
+    eventType: string,
+    // name: string,
+
+}
+
+// createdByUser: user,
+// created: created,
+// type: "",
+// title: "",
+// description: "",
+// eventDateStart: "",
+// eventDateEnd: ""
+
+export function NotesCardEvent({ eventDescription, eventTitle, eventType, eventDateStart, eventDateEnd, created, createdByUser }: cardEventProps) {
     return (
         <>
             <Card className={`cursor-pointer dark:border-none border-none shadow-none`}>
                 <CardContent className="p-3 flex flex-col gap-3">
                     <div>
-                        <Badge>Meet</Badge>
+                        <Badge>{eventType}</Badge>
                     </div>
-                    <h1 className="text-md font-medium">Project Presentation</h1>
-                    <p className="text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam nisi debitis fuga magni quam obcaecati beatae soluta officiis, expedita natus impedit nobis illo odit error non minima aliquam ipsam sit?</p>
+                    <h1 className="text-md font-medium"> {eventTitle} </h1>
+                    <p className="text-xs"> {eventDescription} </p>
                     <div>
-                        <Badge variant={"destructive"}>
-                            <span className="flex items-center gap-2">
-                                <Calendar size={12} />
-                                12 Apr 24
-                            </span>
-                        </Badge>
+                        {eventDateStart ?
+                            <Badge variant={"destructive"}>
+                                <span className="flex items-center gap-2">
+                                    <Calendar size={12} />
+                                    {`${eventDateStart} ${eventDateEnd ? `to  ${eventDateEnd}` : ""}`}
+                                </span>
+                            </Badge>
+                            : null}
                     </div>
+                    <p className="text-sm opacity-60">{createdByUser}  - {created} </p>
                 </CardContent>
                 <Separator className="shadow-md" />
             </Card>

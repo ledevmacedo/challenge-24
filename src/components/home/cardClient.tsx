@@ -11,14 +11,16 @@ interface CardProps {
     clientCompany: string;
     lastNoteDate: any,
     lastNote: any,
+    onClick: any,
 }
 
 
-export function CardClient({ clietnId, clientName, clientCompany, lastNoteDate, lastNote, }: CardProps) {
+export function CardClient({ clietnId, clientName, clientCompany, lastNoteDate, lastNote, onClick }: CardProps) {
     // 
     return (
         <>
             <Card
+                onClick={onClick}
                 className={`cursor-pointer`}>
                 <CardContent className="p-3 flex flex-col gap-3">
                     <div className="flex content-center items-center justify-between">
