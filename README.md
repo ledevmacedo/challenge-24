@@ -1,6 +1,25 @@
+
+# Chellenge 24
+
+Sistema de gerenciamento de contados.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+
+
+## Instalation
+
+Install the project with npm or pnpm (recommended)
+
+```bash
+  pnpm install
+  # or
+  npm install
+  # or
+  yarn install
+```
+    
 
 First, run the development server:
 
@@ -34,3 +53,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Functionalities
+
+- Create new customer
+- Insert notes/events into the client.
+- Export all clients to Json
+- Dark/White Mode
+## Improvements
+
+It is necessary to re-invoice some components so that they are more optimized, in addition to including new pages and the possibility of including specific categories when creating new customers and events.## Stack used
+
+**Front-end:** React, NextJS, TailwindCSS, Shadcn/UI, Zustand
