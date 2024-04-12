@@ -127,7 +127,7 @@ export function NewContactDiaolog() {
                         Inclua informações sobre seu contato
                     </DialogDescription>
                 </DialogHeader>
-                <form onClick={createNewUser} className="flex flex-col gap-4">
+                <form  className="flex flex-col gap-4">
                     <div className="grid gap-2 ">
 
                         <div className="flex flex-col items-start">
@@ -220,7 +220,7 @@ export function NewContactDiaolog() {
                 </form>
                 <DialogFooter>
                     <Button
-                        type="submit">Submit</Button>
+                        type="submit" onClick={createNewUser}>Submit</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog >
