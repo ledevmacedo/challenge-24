@@ -12,16 +12,17 @@ interface CardProps {
     lastNoteDate: any,
     lastNote: any,
     onClick: any,
+    isActive: any,
 }
 
 
-export function CardClient({ clietnId, clientName, clientCompany, lastNoteDate, lastNote, onClick }: CardProps) {
-    // 
+export function CardClient({ clietnId, clientName, clientCompany, lastNoteDate, lastNote, onClick, isActive }: CardProps) {
+
     return (
         <>
             <Card
                 onClick={onClick}
-                className={`cursor-pointer`}>
+                className={`cursor-pointer ${isActive}`}>
                 <CardContent className="p-3 flex flex-col gap-3">
                     <div className="flex content-center items-center justify-between">
                         <h1 className="text-base font-medium leading-none"> {clientName} </h1>

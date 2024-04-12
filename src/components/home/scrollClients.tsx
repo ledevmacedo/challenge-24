@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 import { useStore } from '../../../store';
 export function ScrollClients() {
-    const { setContactIndex } = useStore()
+    const { contactIndex, setContactIndex } = useStore()
     const [contacts, setContacts] = useState<any[]>([]);
 
     const handleSetIndex = (index: number) => {
@@ -21,6 +21,7 @@ export function ScrollClients() {
     }, []);
 
 
+
     return (
         <>
             <ScrollArea className="h-dvh p-4">
@@ -28,8 +29,8 @@ export function ScrollClients() {
                     {/* Criar um botão que altera entre uma */}
                     <div className="w-full flex flex-col gap-2">
                         {contacts.map((contact, index) =>
-
                             <CardClient
+                                isActive={contactIndex == index ? "bg-zinc-100 border-0 dark:bg-zinc-900 transi transition-colors" : ""}
                                 key={index}
                                 onClick={() => handleSetIndex(index)}
                                 clientCompany={contact.company}
