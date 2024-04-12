@@ -7,8 +7,18 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { NewNoteDialog } from "./notes/newNoteDialog";
+import { useState, useEffect } from "react";
+
 
 export function NoteHeader() {
+    const [contacts, setContacts] = useState<any[]>([]);
+
+    useEffect(() => {
+        const localContacts = localStorage.getItem('contacts');
+        if (localContacts) {
+            setContacts(JSON.parse(localContacts));
+        }
+    }, []);
     return (
         <>
             {/* 

@@ -85,13 +85,13 @@ export function NewContactDiaolog() {
                     createdByUser: user,
                     created: created,
                     noteTitle: "Contact created",
-                    note: "",
+                    note: "First note",
                 }
             ],
             events: [
                 {
                     name: "",
-                    created: created,
+                    created: new Date().toISOString(),
                     eventType: "",
                     eventTitle: "",
                     eventDescription: "",
@@ -127,7 +127,7 @@ export function NewContactDiaolog() {
                         Inclua informações sobre seu contato
                     </DialogDescription>
                 </DialogHeader>
-                <form  className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4">
                     <div className="grid gap-2 ">
 
                         <div className="flex flex-col items-start">

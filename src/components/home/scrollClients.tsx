@@ -24,8 +24,8 @@ export function ScrollClients() {
                                 clientCompany={contact.company}
                                 clientName={contact.name}
                                 clietnId={contact.id}
-                                lastNote={contact.notes?.map(notes => notes.note)}
-                                lastNoteDate={contact.notes?.map(notes => format(notes.created, 'dd MMM yyy'))}
+                                lastNote={contact.notes?.map((notes: { note: any; }) => notes.note)}
+                                lastNoteDate={contact.notes?.map((notes: { created: any; }) => format(notes.created, 'dd MMM yyy'))}
                             />
                         )}
                     </div>
